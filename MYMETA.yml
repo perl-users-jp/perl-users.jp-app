@@ -1,0 +1,29 @@
+---
+abstract: http://perl-users.jp/
+author:
+  - yappo
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+distribution_type: module
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 6.57_05'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: PerlUsersJp
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Path::Class: 0
+  Plack: 0
+  Router::Simple: 0
+  Text::Xslate: 0.3001
+  common::sense: 0
+  perl: 5.013007
+version: 0.01

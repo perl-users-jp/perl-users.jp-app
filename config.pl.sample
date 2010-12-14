@@ -1,0 +1,4 @@
+use common::sense;
+{
+    document_root => '../perl-users.jp-htdocs',
+};
