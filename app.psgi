@@ -12,7 +12,6 @@ my $conf = do 'config.pl' or
 my $app = PerlUsersJp->new( config => $conf );
 
 my $static_root = dir($conf->{document_root})->subdir('static');
-my $file = Plack::App::File->new({ root => $static_root });
 
 builder {
     enable 'Static', path => qr{^/(?:img|css|js)/}, root => $static_root;
