@@ -16,6 +16,9 @@ my $file = Plack::App::File->new({ root => $static_root });
 
 builder {
     enable 'Static', path => qr{^/(?:img|css|js)/}, root => $static_root;
+    while (my($path, $root) = each %{ $conf->{static_maps} || {} }) {
+        enable 'Static', path => $path, root => $root;
+    }
     enable 'ReverseProxy';
     $app->code;
 };
