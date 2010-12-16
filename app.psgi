@@ -12,7 +12,8 @@ my $conf = do 'config.pl' or
 my $app = PerlUsersJp->new( config => $conf );
 
 builder {
-    while (my($path, $root) = each %{ $conf->{static_maps} || {} }) {
+    my @maps = @{ $conf->{static_maps} || [] };
+    while (my($path, $root) = splice @maps, 0, 2) {
         enable 'Static', path => $path, root => $root;
     }
     enable 'ReverseProxy';

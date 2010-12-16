@@ -3,9 +3,9 @@ use Path::Class;
 my $document_root = dir('../perl-users.jp-htdocs');
 {
     document_root => $document_root,
-    static_maps   => {
+    static_maps   => [
         qr{^/(?:img|css|js)/} => $document_root->subdir('static'),
         qr{^/lib}             => './',
         qr{^/t}               => './',
-    },
+    ],
 };
