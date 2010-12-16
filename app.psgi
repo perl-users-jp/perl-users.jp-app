@@ -11,10 +11,7 @@ my $conf = do 'config.pl' or
 
 my $app = PerlUsersJp->new( config => $conf );
 
-my $static_root = dir($conf->{document_root})->subdir('static');
-
 builder {
-    enable 'Static', path => qr{^/(?:img|css|js)/}, root => $static_root;
     while (my($path, $root) = each %{ $conf->{static_maps} || {} }) {
         enable 'Static', path => $path, root => $root;
     }

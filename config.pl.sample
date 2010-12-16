@@ -1,8 +1,11 @@
 use common::sense;
+use Path::Class;
+my $document_root = dir('../perl-users.jp-htdocs');
 {
-    document_root => '../perl-users.jp-htdocs',
+    document_root => $document_root,
     static_maps   => {
-        qr{^/lib} => './',
-        qr{^/t}   => './',
+        qr{^/(?:img|css|js)/} => $document_root->subdir('static'),
+        qr{^/lib}             => './',
+        qr{^/t}               => './',
     },
 };
