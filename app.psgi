@@ -17,5 +17,5 @@ builder {
         enable 'Static', path => $path, root => $root;
     }
     enable 'ReverseProxy';
-    $app->code;
+    $app->to_app;
 };

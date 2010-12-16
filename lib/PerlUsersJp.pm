@@ -37,7 +37,7 @@ package PerlUsersJp {
         }, $class;
     }
 
-    sub code {
+    sub to_app {
         my $self = shift;
         sub {
             my $env = shift;
