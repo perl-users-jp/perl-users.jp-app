@@ -27,7 +27,12 @@ package PerlUsersJp {
                 action => 'html',
             },
         );
-
+        $router->connect(
+            '/pull',
+            {
+                action => 'pull',
+            }
+        );
         my $file = Plack::App::File->new({ root => dir($args{config}->{document_root})->subdir('static') });
 
         bless {
@@ -46,6 +51,7 @@ package PerlUsersJp {
                 given ($p->{action}) {
                     when ('index') { $self->dispatch_index($req) }
                     when ('html')  { $self->dispatch_html($req) }
+                    when ('pull')  { $self->dispatch_pull($req) }
                     defaul         { $self->dispatch_file($req->path) }
                 }
             } else {
@@ -70,6 +76,11 @@ package PerlUsersJp {
             SCRIPT_NAME => '',
         };
         $self->{file}->call($env);
+    }
+    sub dispatch_pull {
+        my($self, $req) = @_;
+        system( $ENV{ADVENT_CALENDAR_PULL_COMMAND} );
+        die [ 200, [], ['OK'] ];
     }
 
     sub render_html {
