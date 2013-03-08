@@ -80,7 +80,7 @@ package PerlUsersJp {
     sub dispatch_pull {
         my($self, $req) = @_;
         system( $ENV{ADVENT_CALENDAR_PULL_COMMAND} );
-        die [ 200, [], ['OK'] ];
+        [ 200, [], ['OK'] ];
     }
 
     sub render_html {
